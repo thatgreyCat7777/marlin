@@ -54,6 +54,19 @@ def driver(robot):
             else:
                 robot.thruster(LEFT).set_duty(front)
                 robot.thruster(RIGHT).set_duty(front)
+        else:
+            if turnFast > 0:
+                robot.thruster(LEFT).set_duty(front)
+                robot.thruster(RIGHT).set_duty(front - turnFast)
+            elif turnFast < 0:
+                robot.thruster(LEFT).set_duty(front + turnFast)
+                robot.thruster(RIGHT).set_duty(front)
+            else:
+                robot.thruster(LEFT).set_duty(front)
+                robot.thruster(RIGHT).set_duty(front)
+            # robot.thruster(LEFT).set_duty(front)
+            # robot.thruster(RIGHT).set_duty(front)
+            
         # Rotate to 120 degree point
         # ! It is absolute angle
         if robot.controller.button("LEFT_TRIGGER").is_down:
